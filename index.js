@@ -16,6 +16,14 @@ import tipoMercanciaRoute from './src/routes/tipomercancia.js';
 import tipoSalidaRoute from './src/routes/tiposalida.js';
 import conceptocobroRoute from './src/routes/conceptocobro.js';
 import clienteRoute from './src/routes/cliente.js';
+import anioRoute from './src/routes/anio.js';
+import manejoYprevioRoute from './src/routes/manejoyprevio.js';
+import almacenajeRoute from './src/routes/almacenaje.js';
+import custodiaRoute from './src/routes/custodia.js';
+import servicioExtRoute from './src/routes/servicioextraord.js';
+import vueloRoute from './src/routes/vuelo.js';
+import entradaImpo from './src/routes/entradaimpo.js';
+import paisRoute from './src/routes/pais.js';
 
 const PORT = process.env.PORT || 3001;
 
@@ -36,6 +44,14 @@ app.use('/tipomercancia', tipoMercanciaRoute);
 app.use('/tiposalida', tipoSalidaRoute);
 app.use('/conceptocobro', conceptocobroRoute);
 app.use('/cliente', clienteRoute);
+app.use('/anio', anioRoute);
+app.use('/manejoyprevio', manejoYprevioRoute);
+app.use('/almacenaje', almacenajeRoute);
+app.use('/custodia', custodiaRoute);
+app.use('/servicioext', servicioExtRoute);
+app.use('/vuelo', vueloRoute);
+app.use('/entradaimpo', entradaImpo);
+app.use('/pais', paisRoute);
 
 connection();
 
