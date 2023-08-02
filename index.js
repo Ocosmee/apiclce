@@ -24,6 +24,9 @@ import servicioExtRoute from './src/routes/servicioextraord.js';
 import vueloRoute from './src/routes/vuelo.js';
 import entradaImpo from './src/routes/entradaimpo.js';
 import paisRoute from './src/routes/pais.js';
+import salidaImpo from './src/routes/salidaimpo.js';
+import exportacion from './src/routes/exportacion.js';
+import salidaExpo from './src/routes/salidaexpo.js';
 
 const PORT = process.env.PORT || 3001;
 
@@ -52,6 +55,9 @@ app.use('/servicioext', servicioExtRoute);
 app.use('/vuelo', vueloRoute);
 app.use('/entradaimpo', entradaImpo);
 app.use('/pais', paisRoute);
+app.use('/salidaimpo', salidaImpo);
+app.use('/exportacion', exportacion);
+app.use('/salidaexpo', salidaExpo);
 
 connection();
 

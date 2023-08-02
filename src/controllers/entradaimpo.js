@@ -35,6 +35,7 @@ export const getEntradaImpoCreadas = async(req, res)=>{
                 [sequelize.literal(`( SELECT nombre FROM clientes WHERE id = entradaimpo.idcliente)`),'cliente'],
                 'umedida',
                 'tipocambio',
+                'valormercan',
                 'valorpeso'
             ], 
             where: {estatus: 1}
@@ -49,6 +50,42 @@ export const getEntradaImpoCreadas = async(req, res)=>{
 export const getEntradaImpoById = async(req, res)=>{
     try {
         const rows = await EntradaImpo.findOne({
+            attributes: [
+                'id',  
+                'idvuelo', 
+                [sequelize.literal(`( SELECT tipovuelo FROM vuelo WHERE  id = entradaimpo.idvuelo)`),'tipovuelo'],
+                [sequelize.literal(`( SELECT guiamaster FROM vuelo WHERE  id = entradaimpo.idvuelo)`),'guiamaster'],
+                'guiahouse',
+                'fhentaduana',
+                'fhentalmacen',
+                'idcliente',
+                'avion', 
+                [sequelize.literal(`( SELECT nombre FROM clientes WHERE id = entradaimpo.idcliente)`),'cliente'],
+                'idtipomercan',
+                'idtipoingr',
+                'paisorig',
+                'irregularidad',
+                'contenido',
+                'descripcion',
+                'cantbulto',
+                'peso', 
+                'umedida',
+                'tipomoneda',
+                'tipocambio',
+                'valormercan',
+                'valorpeso',
+                'refrigerar',
+                'nombremitent',
+                'domcremitent',
+                'consignatario',
+                'domconsignatario',
+                'regprevio',
+                'fhregprev',
+                'obs',
+                'ubicacion',
+                'iduser',
+                'estatus',
+            ], 
             where: {id: req.params.id}
         });
         res.status(200).json(rows)
@@ -63,7 +100,8 @@ export const updateEntradaImpo = async(req, res)=>{
             guiahouse: req.body.guiahouse , 
             fhentaduana: new Date(req.body.fhentaduana),
             fhentalmacen: new Date(req.body.fhentalmacen), 
-            idcliente: req.body.idcliente  ,  
+            idcliente: req.body.idcliente  , 
+            avion: req.body.avion, 
             idtipomercan: req.body.idtipomercan  ,
             idtipoingr: req.body.idtipoingr ,
             paisorig: req.body.paisorig ,
@@ -84,7 +122,8 @@ export const updateEntradaImpo = async(req, res)=>{
             domconsignatario: req.body.domconsignatario ,
             regprevio: req.body.regprevio  ,
             fhregprev: new Date(req.body.fhregprev),
-            obs: req.body.obs , 
+            obs: req.body.obs ,
+            ubicacion: req.body.ubicacion
         },
         { where: {id: req.params.id} });
         res.status(200).json({msg: "Se actualizaron los datos!"});

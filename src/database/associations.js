@@ -18,6 +18,9 @@ import Custodia from "../models/custodia.js";
 import ServicioExtraordinario from "../models/servicioextraordinario.js";
 import Vuelo from "../models/vuelo.js";
 import EntradaImpo from "../models/entradaimpo.js";
+import SalidaImpo from "../models/salidaimpo.js";
+import Exportacion from "../models/exportacion.js";
+import SalidaExpo from "../models/salidaexpo.js";
 
 Anio.hasMany(ManejosYprevios, {foreignKey: "idanio"});
 ManejosYprevios.belongsTo(Anio, {foreignKey: "idanio"});
@@ -31,6 +34,7 @@ Custodia.belongsTo(Anio, {foreignKey: "idanio"});
 Anio.hasMany(ServicioExtraordinario, {foreignKey: "idanio"});
 ServicioExtraordinario.belongsTo(Anio, {foreignKey: "idanio"});
 
+//IMPO
 User.hasMany(EntradaImpo, {foreignKey: "iduser"});
 EntradaImpo.belongsTo(User, {foreignKey: "iduser"});
 
@@ -45,3 +49,25 @@ EntradaImpo.belongsTo(TipoMercancia, {foreignKey: "idtipomercan"});
 
 TipoIngreso.hasOne(EntradaImpo, {foreignKey: "idtipoingr"});
 EntradaImpo.belongsTo(TipoIngreso, {foreignKey: "idtipoingr"});
+
+EntradaImpo.hasOne(SalidaImpo, {foreignKey: "identimpo"});
+SalidaImpo.belongsTo(EntradaImpo, {foreignKey: "identimpo"});
+
+//EXPO
+User.hasMany(Exportacion, {foreignKey: "iduser"});
+Exportacion.belongsTo(User, {foreignKey: "iduser"});
+
+LineaAerea.hasOne(Exportacion, {foreignKey: "idlinea"});
+Exportacion.belongsTo(LineaAerea, {foreignKey: "idlinea"});
+
+Cliente.hasOne(Exportacion, {foreignKey: "idcliente"});
+Exportacion.belongsTo(Cliente, {foreignKey: "idcliente"});
+
+TipoMercancia.hasOne(Exportacion, {foreignKey: "idtipomercan"});
+Exportacion.belongsTo(TipoMercancia, {foreignKey: "idtipomercan"});
+
+TipoIngreso.hasOne(Exportacion, {foreignKey: "idtipoingr"});
+Exportacion.belongsTo(TipoIngreso, {foreignKey: "idtipoingr"});
+
+Exportacion.hasOne(SalidaExpo, {foreignKey: "idexpo"});
+SalidaExpo.belongsTo(Exportacion, {foreignKey: "idexpo"});

@@ -1,20 +1,20 @@
 import { DataTypes } from 'sequelize'; 
 import { sequelize } from '../database/config.js';
 
-const EntradaImpo = sequelize.define('entradaimpo', {
-  idvuelo: {
-    type: DataTypes.INTEGER,
+const Exportacion = sequelize.define('exportacion', {
+    guiamaster: {
+    type: DataTypes.STRING,
     allowNull: false
   },
   guiahouse: {
     type: DataTypes.STRING,
     allowNull: false
   }, 
-  fhentaduana:{
+  fhentalmacen:{
     type: DataTypes.DATEONLY,
     allowNull: false
-  },
-  fhentalmacen:{
+  }, 
+  fhexportacion:{
     type: DataTypes.DATE,
     allowNull: false
   }, 
@@ -34,11 +34,7 @@ const EntradaImpo = sequelize.define('entradaimpo', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  paisorig:{
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  irregularidad:{
+  paisdest:{
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -51,7 +47,7 @@ const EntradaImpo = sequelize.define('entradaimpo', {
     allowNull: false
   },
   cantbulto:{
-    type: DataTypes.DECIMAL(10,2),
+    type: DataTypes.INTEGER,
     defaultValue: 0
   },
   peso:{
@@ -61,6 +57,14 @@ const EntradaImpo = sequelize.define('entradaimpo', {
   umedida:{
     type: DataTypes.STRING,
     allowNull: false
+  },
+  refrigerar:{
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
+  obs:{
+    type: DataTypes.STRING,
+    defaultValue: ""
   },
   tipomoneda:{
     type: DataTypes.STRING,
@@ -78,23 +82,19 @@ const EntradaImpo = sequelize.define('entradaimpo', {
     type: DataTypes.DECIMAL(20,2),
     defaultValue: 0
   },
-  refrigerar:{
-    type: DataTypes.BOOLEAN,
-    defaultValue: false
-  },
-  nombremitent:{
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  domcremitent:{
-    type: DataTypes.STRING,
-    allowNull: false
-  },
+  idlinea:{
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  }, 
   consignatario:{
     type: DataTypes.STRING,
     allowNull: false
   },
-  domconsignatario:{
+  consigoriginal:{
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  domconsignat:{
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -105,11 +105,7 @@ const EntradaImpo = sequelize.define('entradaimpo', {
   fhregprev:{
     type: DataTypes.DATEONLY,
     allowNull: false
-  },
-  obs:{
-    type: DataTypes.STRING,
-    defaultValue: ""
-  },
+  }, 
   ubicacion:{
     type: DataTypes.STRING,
     defaultValue: ""
@@ -128,4 +124,4 @@ const EntradaImpo = sequelize.define('entradaimpo', {
     
 );
 
-export default EntradaImpo;
+export default Exportacion;
