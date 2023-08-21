@@ -12,7 +12,12 @@ export const getFolio = async(req, res)=>{
 
 export const createExportacion = async(req, res)=>{
     try {
-         
+        const { count } = await Exportacion.findAndCountAll();
+        let folio = count + 1;
+
+        req.body.guiamaster = folio +"-"+ req.body.guiamaster;
+        req.body.guiahouse  = folio +"-"+ req.body.guiahouse;
+
         const newExportacion = new Exportacion(req.body);
         await newExportacion.save();
         res.status(201).json({msg: "Se creo exitosamente"})

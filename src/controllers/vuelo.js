@@ -3,13 +3,15 @@ import Vuelo from "../models/vuelo.js";
 
 export const createVuelo = async(req, res)=>{
     try { 
+        const { count } = await Vuelo.findAndCountAll();
+        let folio = count + 1;
         const newVuelo = new Vuelo({
             idlinaerea: req.body.idlinaerea,
             tipovuelo: req.body.tipovuelo,
             novuelo: req.body.novuelo,
-            guiamaster: req.body.guiamaster,
+            guiamaster: folio +"-"+ req.body.guiamaster,
             fechacapt: req.body.fechacapt,
-            guiasvuelo: req.body.guiasvuelo,
+            guiasvuelo: folio +"-"+ req.body.guiasvuelo,
             iduser: req.body.iduser, 
         });
         await newVuelo.save();

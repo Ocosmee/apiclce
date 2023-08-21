@@ -23,7 +23,7 @@ const Vuelo = sequelize.define('vuelo', {
     allowNull: false
   },
   guiasvuelo: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false
   },
   iduser:{
